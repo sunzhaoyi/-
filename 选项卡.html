@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+	body{
+		display: flex;
+	}
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.tabs_box{
+		width: 500px;
+	}
+	.tabs{
+		display: flex;
+	}
+	.tabs li{
+		padding: 10px;
+		padding-left: 28px;
+		font-size: 18px;
+		background: url('images/icon1.png') no-repeat 10px;
+	}
+	.tabs .cur{
+		color: #046fbb;
+	}
+	.contents div{
+		height: 200px;
+		font-size: 14px;
+		line-height: 1.5;
+		display: none;
+	}
+	.contents .show{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	<div id="tabs1" class="tabs_box">
+		<ul class="tabs">
+			<li class="cur">学院新闻</li>
+			<li>通知公告</li>
+			<li>学术动态</li>
+		</ul>
+		<div class="contents">
+			<div class="show">学院新闻的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur rerum dolor unde iure quisquam tempore itaque, nemo inventore est, dignissimos tenetur quas cupiditate, obcaecati dolore fugit voluptatibus tempora? Ratione, ab.</div>
+			<div>通知公告的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quidem sunt voluptas harum ipsam libero unde quisquam ullam deleniti delectus, quos dignissimos adipisci, dicta amet minima fugit, rerum! Quas, dolores.</div>
+			<div>学术动态的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorum, sunt ad porro iusto illo quibusdam explicabo quod impedit labore praesentium corporis perferendis enim accusantium non illum at nesciunt, laudantium!</div>
+		</div>
+	</div>
+	<div id="tabs2" class="tabs_box">
+		<ul class="tabs">
+			<li class="cur">学院新闻</li>
+			<li>通知公告</li>
+			<li>学术动态</li>
+		</ul>
+		<div class="contents">
+			<div class="show">学院新闻的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur rerum dolor unde iure quisquam tempore itaque, nemo inventore est, dignissimos tenetur quas cupiditate, obcaecati dolore fugit voluptatibus tempora? Ratione, ab.</div>
+			<div>通知公告的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quidem sunt voluptas harum ipsam libero unde quisquam ullam deleniti delectus, quos dignissimos adipisci, dicta amet minima fugit, rerum! Quas, dolores.</div>
+			<div>学术动态的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorum, sunt ad porro iusto illo quibusdam explicabo quod impedit labore praesentium corporis perferendis enim accusantium non illum at nesciunt, laudantium!</div>
+		</div>
+	</div>
+	<div id="tabs3" class="tabs_box">
+		<ul class="tabs">
+			<li class="cur">学院新闻</li>
+			<li>通知公告</li>
+			<li>学术动态</li>
+		</ul>
+		<div class="contents">
+			<div class="show">学院新闻的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur rerum dolor unde iure quisquam tempore itaque, nemo inventore est, dignissimos tenetur quas cupiditate, obcaecati dolore fugit voluptatibus tempora? Ratione, ab.</div>
+			<div>通知公告的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quidem sunt voluptas harum ipsam libero unde quisquam ullam deleniti delectus, quos dignissimos adipisci, dicta amet minima fugit, rerum! Quas, dolores.</div>
+			<div>学术动态的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorum, sunt ad porro iusto illo quibusdam explicabo quod impedit labore praesentium corporis perferendis enim accusantium non illum at nesciunt, laudantium!</div>
+		</div>
+	</div>
+	<script>
+	//选项卡：点击每个选项，被惦记的选项具有特殊样式，其他选项样式回复正常，被点击的选项对应的选项内容显示，其他选项内容不显示。
+	//获取所有选项及选项内容
+	function tab(id){
+	var box=document.getElementById(id);
+	//获取所有选项
+	var ul=box.getElementsByClassName('tabs')[0];
+	var lis=ul.getElementsByTagName('li');
+	//获取所有选项内容
+	var div=box.getElementsByClassName('contents')[0];
+	var divs=div.getElementsByTagName('div');
+	//给每个选项绑定点击事件
+	for(var i=0;i<lis.length;i++){
+		lis[i].index=i;//设置所有选项index属性，保存选项的索引序号
+		lis[i].onclick=function(){
+			//所有选项样式回复正常
+			for(var i=0;i<lis.length;i++){
+				//lis[i].className='';//class的值设置为空，没有去掉class属性
+				lis[i].removeAttribute('class');//去掉class属性
+			}
+			//所有选项内容不显示
+			for(var i=0;i<divs.length;i++){
+				//divs[i].className='';//class的值设置为空，没有去掉class属性
+				divs[i].removeAttribute('class');
+			}
+			this.className='cur';//被点击的选项具有特殊样式
+			divs[this.index].className='show';//被点击的选项对性的选项内容显示
+		} 	
+	}
+}
+	tab('tabs1');
+	tab('tabs2');
+	tab('tabs3');
+	</script>
+</body>
+</html>
